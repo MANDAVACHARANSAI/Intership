@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Planner with Dark Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">🌐 Task-2</div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#" onclick="showSection('welcome-box')">Home</a>
+      <a href="#" onclick="showSection('about-box')">About</a>
+      <a href="#" onclick="showSection('feature-box')">Services</a>
+      <a href="#" onclick="showSection('contact-box')">Contact</a>
+    </nav>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <!-- Dark Mode Toggle -->
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle" onchange="toggleTheme()" />
+      <span class="slider">
+        <span class="icon sun">🌞</span>
+        <span class="icon moon">🌙</span>
+      </span>
+    </label>
+  </header>
+
+  <!-- Section Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button onclick="showSection('planner-box')">✅ Todo Tasks</button>
+    <button onclick="showSection('gallery-box')">🖼️ Show Image Gallery</button>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="grid-container">
+    <div id="welcome-box" class="card active">
+      <h2>Welcome to the Homepage</h2>
+      <p>This project showcases a modern, responsive webpage built using HTML, CSS, and JavaScript...</p>
+    </div>
+
+    <div id="about-box" class="card">
+      <h2>About This Webpage</h2>
+      <p>This webpage is designed as a front-end project...</p>
+    </div>
+
+    <div id="feature-box" class="card">
+      <h2>Our Services</h2>
+      <ul>
+        <li>✅ To-Do List for daily task tracking</li>
+        <li>📸 Image Gallery with responsive design</li>
+        <li>📆 Calendar for marking dates</li>
+        <li>🧠 Simple and clean UI/UX for beginners</li>
+        <li>⚙️ Dynamic components using JavaScript</li>
+      </ul>
+    </div>
+
+    <div id="contact-box" class="card">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Your Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Your Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="message">Your Message:</label><br />
+        <textarea id="message" name="message" rows="4" required></textarea><br /><br />
+
+        <button type="submit" style="background-color: #131449; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Send</button>
+      </form>
+    </div>
+
+ <!-- Combined Planner Section -->
+<section id="planner-box" class="card todo-card">
+  <h2>📋 Planner</h2>
+
+  <!-- To-Do List Input -->
+  <div class="todo-controls">
+    <input type="text" id="todoInput" placeholder="Add a new task..." class="todo-input">
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="todo-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="active">Active</button>
+    <button class="filter-btn" data-filter="completed">Completed</button>
+  </div>
+
+  <!-- To-Do List Display -->
+  <ul id="todoList" class="todo-list"></ul>
+
+  <!-- Date & Time Picker -->
+  <label for="calendar">Select Date:</label><br />
+  <input type="date" id="calendar" class="input-field"><br /><br />
+
+  <label for="timePicker">Select Time:</label><br />
+  <input type="time" id="timePicker" class="input-field"><br /><br />
+
+  <!-- Bottom Action Buttons -->
+  <div class="todo-stats combined-actions">
+    <span id="tasksCount">0 tasks</span>
+    <div class="button-group">
+      <button id="addTodo" class="todo-button">Add Task</button>
+      <button id="clearCompleted" class="clear-btn">Clear Completed</button>
+    </div>
+  </div>
+</section>
+
+    <!-- Gallery Section -->
+    <div id="gallery-box" class="card image-gallery-card">
+      <h3>Image Gallery</h3>
+      <div class="image-controls">
+        <input type="text" id="image-url" placeholder="Enter Image URL" />
+        <button onclick="addImage()">Add Image</button>
+      </div>
+      <div id="gallery" class="image-gallery"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 MySite. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

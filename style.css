@@ -1,0 +1,423 @@
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+  transition: background-color 0.4s, color 0.4s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+body.dark-mode .navbar {
+  background-color: #1a73e8;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Menu toggle for mobile */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dark Mode Toggle Switch */
+.theme-switch {
+  margin-left: 15px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  background-color: #ccc;
+  border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  transition: background-color 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 18px;
+  user-select: none;
+}
+
+.slider .icon {
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.slider .sun {
+  opacity: 1;
+}
+
+.slider .moon {
+  opacity: 0;
+}
+
+input:checked + .slider {
+  background-color: #4a90e2;
+}
+
+input:checked + .slider .sun {
+  opacity: 0;
+}
+
+input:checked + .slider .moon {
+  opacity: 1;
+}
+
+/* Grid Layout for main content */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s;
+  display: none;
+  justify-self: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.card.active {
+  display: block;
+}
+
+body.dark-mode .card {
+  background: #222;
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.footer {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .footer {
+  background-color: #1a73e8;
+}
+
+/* To-Do List Styles */
+.todo-card h2 {
+  margin-bottom: 1rem;
+}
+
+.todo-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+body.dark-mode .todo-input {
+  background-color: #333;
+  border-color: #555;
+  color: #eee;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.todo-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.todo-button:hover {
+  background-color: #357abd;
+}
+
+.todo-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  background-color: #eee;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color  0.3s;
+}
+
+body.dark-mode .filter-btn {
+  background-color: #444;
+  color: #ddd;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.todo-list {
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.todo-list li {
+  padding: 0.6rem 1rem;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+body.dark-mode .todo-list li {
+  background-color: #333;
+  color: #eee;
+}
+
+.todo-list li.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-list li:hover {
+  background-color: #d0e4ff;
+}
+
+body.dark-mode .todo-list li:hover {
+  background-color: #4a90e2;
+}
+
+.clear-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.clear-btn:hover {
+  background-color: #c0392b;
+}
+
+.todo-stats {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #4a90e2;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 150px;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    color: white;
+  }
+}
+/* Ensure cards shrink to fit content */
+.card {
+  max-width: 600px;
+  width: 100%;
+  padding: 1rem;
+  min-height: auto;
+}
+
+/* Toggle Buttons for Sections */
+.toggle-buttons {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-buttons button:hover {
+  background-color: #357abd;
+}
+#calendar {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+#calendar div {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #e3e3e3;
+}
+
+body.dark-mode #calendar div {
+  background-color: #333;
+  color: #fff;
+}
+
+#calendar div.header {
+  font-weight: bold;
+  background-color: #4a90e2;
+  color: white;
+}
+
+body.dark-mode #calendar div.header {
+  background-color: #1a73e8;
+}
+/* Combine Add and Clear buttons at the bottom */
+.combined-actions {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Unified input style */
+.input-field {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* Mark Date button style */
+.mark-btn {
+  background-color: #131449;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.mark-btn:hover {
+  background-color: #0e1030;
+}
